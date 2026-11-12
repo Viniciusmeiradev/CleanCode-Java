@@ -83,3 +83,41 @@ public class SparkleApp extends JFrame{
         double TaxaDecaimento;
         int size;
         Color color;
+
+    public Particula(int startX, int startY, Random rand){
+            this.vetorX = startX + rand.nextInt(10) - 5;
+            this.vetorY = startY + rand.nextInt(10) - 5;
+            // Velocidade inicial
+            this.velocidadex = (rand.nextDouble() - 0.5) * 4;
+            this.velocidadey = (rand.nextDouble() - 0.5) * 4 - 1;
+            this.transparencia = 1.0;
+            this.taxaDecaimento = 0.02 + rand.nextDouble() * 0.03;
+            this.tamanho = 4 + rand.nextInt(6);
+
+
+            //Cores
+            int colorChoice = rand.nextInt(3);
+            if (colorChoice == 0){
+                this.color = new Color(255, 223,0);
+            }else if(colorChoice == 1){
+                this.color = new Color(255, 255, 255);
+            }else{
+                this.color = new Color(135,206,250);
+            }
+        }
+
+        public void Atualizar(){
+            //Puxa pra baixo
+            velocidadey += 0.2; 
+
+            //Movimento 
+            vetorx += velocidadex;
+            vetory += velocidadey;
+
+            //reduz transparencia
+            transparencia -= taxaDecaimento;
+            if (transparencia < 0) transparencia = 0;           
+        }
+        public boolean Brilho(){
+            return transparencia > 0;
+        }
