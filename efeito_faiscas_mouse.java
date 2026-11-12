@@ -84,7 +84,7 @@ public class SparkleApp extends JFrame{
         int size;
         Color color;
 
-    public Particula(int startX, int startY, Random rand){
+        public Particula(int startX, int startY, Random rand){
             this.vetorX = startX + rand.nextInt(10) - 5;
             this.vetorY = startY + rand.nextInt(10) - 5;
             // Velocidade inicial
@@ -123,7 +123,8 @@ public class SparkleApp extends JFrame{
         }
 
         public void Desenho(Graphics2D g2d){
-                                                                            //Opacidade                     g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) transparencia));
+	    //opacidade
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) transparencia));
             g2d.setColor(color);
 
                 //Faisca
