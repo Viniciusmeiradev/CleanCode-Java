@@ -121,3 +121,22 @@ public class SparkleApp extends JFrame{
         public boolean Brilho(){
             return transparencia > 0;
         }
+
+        public void Desenho(Graphics2D g2d){
+                                                                            //Opacidade                     g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) transparencia));
+            g2d.setColor(color);
+
+                //Faisca
+            g2d.fillOval((int) vetorx, (int) vetory, tamanho, tamanho);
+            if (tamanho > 6){
+                g2d.setColor(new Color(255, 255, 255, (int)(alpha * 150)));
+                g2d.fillOval((int) vetorx - 1, (int) vetory -1, tamanho + 2, tamanho + 2);
+            }
+        }     
+    }
+    public static void main(String[] args){
+        SwingUtilities.invokeLater(() ->{
+            new SparkleApp().setVisible(true);
+        });
+    }
+}
