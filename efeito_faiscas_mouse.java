@@ -1,6 +1,11 @@
 import javax.swing.*;
-import java.util.random;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 
 public class SparkleApp extends JFrame{
     private final ArrayList<Particula> particulas = new ArrayList<>();
@@ -72,6 +77,9 @@ public class SparkleApp extends JFrame{
     }
 
     private static class Particula{
-        
-    }
-}
+        double vetorx, vetory:
+        double velocidadex, velocidadey;
+        double transparencia;
+        double TaxaDecaimento;
+        int size;
+        Color color;
