@@ -132,3 +132,10 @@ public class SparkleApp extends JFrame {
             }
         }
     }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new SparkleApp().setVisible(true);
+        });
+    }
+}
