@@ -72,3 +72,63 @@ public class SparkleApp extends JFrame {
             }
         }
     }
+
+    private static class Particula {
+        double vetorx, vetory;
+        double velocidadex, velocidadey;
+        double transparencia;
+        double taxaDecaimento;
+        int tamanho;
+        Color color;
+
+        public Particula(int startX, int startY, Random rand) {
+            this.vetorx = startX + rand.nextInt(10) - 5;
+            this.vetory = startY + rand.nextInt(10) - 5;
+            // Velocidade inicial
+            this.velocidadex = (rand.nextDouble() - 0.5) * 4;
+            this.velocidadey = (rand.nextDouble() - 0.5) * 4 - 1;
+            this.transparencia = 1.0;
+            this.taxaDecaimento = 0.02 + rand.nextDouble() * 0.03;
+            this.tamanho = 4 + rand.nextInt(6);
+
+            // Cores
+            int colorChoice = rand.nextInt(3);
+            if (colorChoice == 0) {
+                this.color = new Color(255, 223, 0);
+            } else if (colorChoice == 1) {
+                this.color = new Color(255, 255, 255);
+            } else {
+                this.color = new Color(135, 206, 250);
+            }
+        }
+
+        public void atualizar() {
+            // Puxa pra baixo
+            velocidadey += 0.2;
+
+            // Movimento
+            vetorx += velocidadex;
+            vetory += velocidadey;
+
+            // Reduz transparência
+            transparencia -= taxaDecaimento;
+            if (transparencia < 0) transparencia = 0;
+        }
+
+        public boolean brilho() {
+            return transparencia > 0;
+        }
+
+        public void desenho(Graphics2D g2d) {
+            // Opacidade
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) transparencia));
+            g2d.setColor(color);
+
+            // Faísca
+            g2d.fillOval((int) vetorx, (int) vetory, tamanho, tamanho);
+            if (tamanho > 6) {
+                g2d.setColor(new Color(255, 255, 255, (int) (transparencia * 150)));
+                g2d.fillOval((int) vetorx - 1, (int) vetory - 1, tamanho + 2, tamanho + 2);
+            }
+        }
+    }
