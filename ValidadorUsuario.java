@@ -8,7 +8,11 @@ public class ValidadorUsuario {
         if (user != User.NULL){
             String codedPhrase = user.getPharseEncodedByPassword();
             String phrase = cryptographer.decrypt(codedPhrase, password);
-            
-        }        
+            if ("Senha Válida".equals(phrase)){
+                return true;
+            }
+        }
+        return false;
     }
 }
+
