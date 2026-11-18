@@ -1,0 +1,19 @@
+//Declara o try/catch primeiro e o tratamento das exceçoes depois
+
+public void deleta(Page page){
+    try{
+        deletaPaginas(page);
+    }catch(Exception e){
+        logError(e);
+    }
+}
+
+public void deletaPaginas(Page page) throws Exception{
+    deletaPage(page);
+    registro.deletaReference(page.name);
+    configKey.deletaKey(page.name.makeKey());
+}
+
+private void logError(e){
+    logger.log(e.getMessage());
+}
