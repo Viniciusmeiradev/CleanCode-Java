@@ -11,4 +11,15 @@ public class SetupTeardownIncluder{
     public static String render(PageData pageData)throws Exception{
         return render(pageData, false);
     }
+
+    public static String render(PageData pageData, boolean isSuite) throws Exception{
+        return new SetupTeardownIncluder(pageData).render(isSuite);
+    }
+
+    public SetupTeardownIncluder(PageData pageData){
+        this.pageData = pageData;
+        testPage = pageData.getWikiPage();
+        pageCrawler = testPage.getPageCrawler();
+        newPageContent = new StringBuffer();
+    }
 }
