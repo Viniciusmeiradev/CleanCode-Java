@@ -30,3 +30,27 @@ public class PrimoGerador{
             }
         }
     }
+
+     private static int determinaLimiteInterator(){
+        double interatorLimit = Math.sqrt(encerrado.length);
+        return (int) interatorLimit;
+    }
+
+    private static void multiploEncerradoDe(int i){
+        for(int multiple = 2 * i; multiple < encerrado.length; multiple += i){
+            encerrado[multiple] = true;
+        }
+    }
+
+    private static boolean naoEncerrado(int i){
+        return encerrado[i] == false;
+    }
+
+    private static void integerResultado(){
+        resultado = new int[numeroInteiro()];
+        for(int j= 0; i = 2; i < encerrado.length; i++){
+            if (naoEncerrado(i)){
+                resultado[j++] = i;
+            }
+        }
+
