@@ -1,5 +1,6 @@
 import java.util.*;
 
+//Crivo de Eratóstenes
 public class PrimoGerador{
     private static boolean[] encerrado;
     private static int[] resultado;
@@ -66,5 +67,3 @@ public class PrimoGerador{
     }
 }
 
-
-kmkmkijuhuhhu
