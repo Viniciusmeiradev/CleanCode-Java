@@ -31,7 +31,7 @@ public class PrimoGerador{
         }
     }
 
-     private static int determinaLimiteInterator(){
+    private static int determinaLimiteInterator(){
         double interatorLimit = Math.sqrt(encerrado.length);
         return (int) interatorLimit;
     }
@@ -54,3 +54,14 @@ public class PrimoGerador{
             }
         }
 
+        private static numeroInteiro(){
+            int contador = 0;
+            for (int i=2; i< encerrado.length; i++){
+                if (naoEncerrado(i)){
+                    contador++;
+                }
+            }
+            return contador;
+        }
+    }
+}
